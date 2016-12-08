@@ -5,4 +5,4 @@ from Src.Forms.Curativo.ProcedimentoMaterial import ProcedimentoMaterial
 
 
 class ProcedimentoMaterialLista(Form):
-    procedimento_materiais = FieldList(FormField(ProcedimentoMaterial))
+    procedimentos_materiais = FieldList(FormField(ProcedimentoMaterial))
