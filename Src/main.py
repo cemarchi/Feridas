@@ -1,11 +1,4 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-
-app.secret_key = 'secret'
-app.config.update({'SQLALCHEMY_DATABASE_URI': 'sqlite:///db/ferida.db',})
-db = SQLAlchemy(app)
+from Src import app
 
 
 @app.route('/api/v1')
@@ -14,4 +7,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run('localhost', 5000, debug=True, use_reloader=False)
