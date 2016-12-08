@@ -15,7 +15,10 @@ login_manager.init_app(app)
 with app.test_request_context():
     from Src.Models.Autenticacao import Usuario
     from Src.Views.Autenticacao.Autenticacao import autenticacao
+    from Src.Views.Curativo.Curativo import  curativo
 
     app.register_blueprint(autenticacao, url_prefix='/api/v1')
+    app.register_blueprint(curativo, url_prefix='/api/v1')
+
     db.create_all()
 

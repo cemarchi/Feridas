@@ -1,7 +1,6 @@
 from flask_security import UserMixin
 from flask.ext import bcrypt
 from datetime import datetime
-import json
 
 from Src import db
 
