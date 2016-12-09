@@ -39,3 +39,14 @@ Endpoint: 'http://localhota:5000/api/v1/usuarios'
             }
         ]
 }
+
+
+Curativo
+
+{
+  "material_limpeza_id": 1,
+  "material_oclusao_id": 2,
+  "id_material_fixacao": 3,
+  "material_aplicacao_id": 4,
+  "frequencia_id": 1
+}

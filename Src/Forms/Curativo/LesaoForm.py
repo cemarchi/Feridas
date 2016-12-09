@@ -3,5 +3,5 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 
-class Lesao(Form):
+class LesaoForm(Form):
     nome = StringField('nome', validators=[DataRequired(message='Lesão é requerida.')])

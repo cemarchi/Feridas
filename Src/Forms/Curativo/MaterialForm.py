@@ -3,5 +3,5 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 
-class Procedimento(Form):
+class MaterialForm(Form):
     nome = StringField('nome', validators=[DataRequired(message='Procedimento é requerido.')])
