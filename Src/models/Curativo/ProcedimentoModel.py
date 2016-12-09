@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from Src import db
 
 
-class Procedimento(db.Model):
+class ProcedimentoModel(db.Model):
     __tablename__ = 'procedimento'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
