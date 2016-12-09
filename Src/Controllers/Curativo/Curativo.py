@@ -4,6 +4,7 @@ from flask.ext.login import login_required
 from flask_json import as_json
 
 from Src import db
+from Src .Cache import cache
 from Src.Forms.Curativo.LesaoForm import LesaoForm
 from Src.Models.Curativo.LesaoModel import LesaoModel
 from Src.Forms.Curativo.ProcedimentoForm import ProcedimentoForm
@@ -21,7 +22,7 @@ curativo = Blueprint('curativo', __name__)
 
 
 @curativo.route("/lesoes", methods=["POST"])
-# @login_required
+@login_required
 @as_json
 def adicionar_lesao():
     form = LesaoForm.from_json(request.get_json(force=True))
@@ -44,6 +45,7 @@ def adicionar_lesao():
 
 @curativo.route("/lesoes", methods=["GET"])
 @login_required
+@cache.cached(300)
 @as_json
 def listar_lesoes():
     lesoes = LesaoModel.query.all()
@@ -78,6 +80,7 @@ def adicionar_material():
 
 @curativo.route("/materiais", methods=["GET"])
 @login_required
+@cache.cached(300)
 @as_json
 def listar_materiais():
     materiais = MaterialModel.query.all()
@@ -112,6 +115,7 @@ def adicionar_procedimento():
 
 @curativo.route("/procedimentos", methods=["GET"])
 @login_required
+@cache.cached(300)
 @as_json
 def listar_procedimentos():
     procedimentos = ProcedimentoModel.query.all()
@@ -146,6 +150,7 @@ def adicionar_frequencia():
 
 @curativo.route("/freq_curativos", methods=["GET"])
 @login_required
+@cache.cached(300)
 @as_json
 def listar_frequencia():
     frequencias = FrequenciaModel.query.all()
@@ -157,7 +162,7 @@ def listar_frequencia():
 
 
 @curativo.route("/procedimentos/materiais", methods=["POST"])
-# @login_required
+@login_required
 @as_json
 def adicionar_procedimento_material():
     erro_mensagem = 'Impossível cadastrar os procedimento e materiais.'
@@ -196,7 +201,8 @@ def adicionar_procedimento_material():
 
 
 @curativo.route("/procedimentos/materiais", methods=["GET"])
-# @login_required
+@login_required
+@cache.cached(300)
 @as_json
 def listar_procedimento_materiais():
     procedimentos_materiais = ProcedimentoMaterialModel.query.all()
@@ -208,7 +214,7 @@ def listar_procedimento_materiais():
 
 
 @curativo.route("/curativos", methods=["POST"])
-# @login_required
+@login_required
 @as_json
 def adicionar_curativo():
     form = CurativoForm.from_json(request.get_json(force=True))
@@ -245,7 +251,8 @@ def adicionar_curativo():
     return {'descricao': 'Curativo cadastrado com sucesso.'}, status.HTTP_201_CREATED
 
 @curativo.route("/curativos", methods=["GET"])
-# @login_required
+@login_required
+@cache.cached(300)
 @as_json
 def listar_curativos():
     curativos = CurativoModel.query.all()

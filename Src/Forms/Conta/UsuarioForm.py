@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Email, Length
 
 
-class Usuario(Form):
+class UsuarioForm(Form):
     senha = PasswordField('senha', validators=[DataRequired(message='Senha é requerida.'),
                                                Length(min=4, max=10, message='Senha deve possuir entre 4 a 10 caracteres.')])
     email = StringField('email', validators=[DataRequired(message='E-mail é requerido.'),

@@ -1,4 +1,4 @@
-from Src import db
+from Src.Models import db
 
 
 class LesaoModel(db.Model):

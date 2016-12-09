@@ -1,25 +1,26 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, current_app
 from flask.ext.api import status
 from flask.ext.login import login_required, logout_user, login_user, current_user
 from flask_json import as_json
 
-from Src import login_manager, db
-from Src.Forms.Autenticacao.UsuarioAutenticacao import UsuarioAutenticacao
-from Src.Forms.Autenticacao.Usuario import Usuario as UsuarioNovo
-from Src.Models.Autenticacao.Usuario import Usuario
+from Src.Security import login_manager
+from Src.Models import db
+from Src.Forms.Conta.UsuarioAutenticacaoForm import UsuarioAutenticacaoForm
+from Src.Forms.Conta.UsuarioForm import UsuarioForm
+from Src.Models.Conta.UsuarioModel import UsuarioModel
 
-autenticacao = Blueprint('autenticacao', __name__)
+conta = Blueprint('conta', __name__)
 
 
 @login_manager.user_loader
 def load_user(usuario_id):
-    return Usuario.query.filter(Usuario.id == usuario_id).first()
+    return UsuarioModel.query.filter(UsuarioModel.id == usuario_id).first()
 
 
-@autenticacao.route('/usuarios', methods=['POST'])
+@conta.route('/usuarios', methods=['POST'])
 @as_json
 def adicionar_usuario():
-    form = UsuarioNovo.from_json(request.get_json(force=True))
+    form = UsuarioForm.from_json(request.get_json(force=True))
     form.validate_on_submit()
 
     if any(form.senha.errors) or \
@@ -32,21 +33,21 @@ def adicionar_usuario():
 
         return {'descricao': mensagem_erro.strip()}, status.HTTP_400_BAD_REQUEST
 
-    if Usuario.query.filter_by(email=form.email.data).first() or\
-       Usuario.query.filter_by(nome=form.nome.data).first():
+    if UsuarioModel.query.filter_by(email=form.email.data).first() or\
+       UsuarioModel.query.filter_by(nome=form.nome.data).first():
         return {'descricao': 'usuário não pode ser cadastrado.'}, status.HTTP_409_CONFLICT
 
-    usuario_novo = Usuario(form.nome.data, form.email.data, form.senha.data)
+    usuario_novo = UsuarioModel(form.nome.data, form.email.data, form.senha.data)
     db.session.add(usuario_novo)
     db.session.commit()
 
-    return {'descricao':'usuário cadastrado com sucesso.'}, status.HTTP_201_CREATED
+    return {'descricao':'Usuário cadastrado com sucesso.'}, status.HTTP_201_CREATED
 
 
-@autenticacao.route("/sessao", methods=["POST"])
+@conta.route("/sessao", methods=["POST"])
 @as_json
 def autenticar():
-    form = UsuarioAutenticacao.from_json(request.get_json(force=True))
+    form = UsuarioAutenticacaoForm.from_json(request.get_json(force=True))
     form.validate_on_submit()
 
     if any(form.senha.errors) or\
@@ -57,7 +58,7 @@ def autenticar():
 
         return {'descricao': mensagem_erro.strip()}, status.HTTP_400_BAD_REQUEST
 
-    usuario = Usuario.query.filter_by(email=form.usuario.data).first()
+    usuario = UsuarioModel.query.filter_by(email=form.usuario.data).first()
 
     if usuario and usuario.senha_correta(form.senha.data):
         login_user(usuario)
@@ -66,7 +67,7 @@ def autenticar():
     return {'descricao': 'Usuário ou senha inválido.'}, status.HTTP_401_UNAUTHORIZED
 
 
-@autenticacao.route('/sessao', methods=["DELETE"])
+@conta.route('/sessao', methods=["DELETE"])
 @login_required
 @as_json
 def sair():
@@ -74,7 +75,7 @@ def sair():
     return {'descricao': 'Usuário desconectado com sucesso.'}, status.HTTP_200_OK
 
 
-@autenticacao.route('/sessao', methods=["GET"])
+@conta.route('/sessao/usuario_info', methods=["GET"])
 @login_required
 @as_json
 def checar_status():

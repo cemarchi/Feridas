@@ -1,0 +1,96 @@
+2016-12-09 09:11:29,917 - Src - ERROR
+Arquivo: Main.py
+Método: exceptions
+Mensagem: 127.0.0.1 POST http /api/v1/usuarios? 5xx INTERNAL SERVER ERROR
+Traceback (most recent call last):
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Program Files\Python35\lib\site-packages\flask_json.py", line 199, in wrapper
+    rv = f(*args, **kwargs)
+  File "C:\GitHub\Feridas\Src\Controllers\Conta\Conta.py", line 23, in adicionar_usuario
+    raise Exception("Can't connect to database")
+Exception: Can't connect to database
+
+
+2016-12-09 09:19:07,027 - Src - ERROR
+Arquivo: Main.py
+Método: exceptions
+Mensagem: 127.0.0.1 POST http /api/v1/usuarios? 5xx INTERNAL SERVER ERROR
+Traceback (most recent call last):
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Program Files\Python35\lib\site-packages\flask_json.py", line 199, in wrapper
+    rv = f(*args, **kwargs)
+  File "C:\GitHub\Feridas\Src\Controllers\Conta\Conta.py", line 23, in adicionar_usuario
+    raise Exception("Can't connect to database")
+Exception: Can't connect to database
+
+
+2016-12-09 09:19:55,374 - Src - ERROR
+Arquivo: Main.py
+Método: exceptions
+Mensagem: 127.0.0.1 POST http /api/v1/usuarios? 5xx INTERNAL SERVER ERROR
+Traceback (most recent call last):
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Program Files\Python35\lib\site-packages\flask_json.py", line 199, in wrapper
+    rv = f(*args, **kwargs)
+  File "C:\GitHub\Feridas\Src\Controllers\Conta\Conta.py", line 23, in adicionar_usuario
+    raise Exception("Can't connect to database")
+Exception: Can't connect to database
+
+
+2016-12-09 09:20:37,829 - Src - ERROR
+Arquivo: Main.py
+Método: exceptions
+Mensagem: 127.0.0.1 POST http /api/v1/usuarios? 5xx INTERNAL SERVER ERROR
+Traceback (most recent call last):
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Program Files\Python35\lib\site-packages\flask_json.py", line 199, in wrapper
+    rv = f(*args, **kwargs)
+  File "C:\GitHub\Feridas\Src\Controllers\Conta\Conta.py", line 23, in adicionar_usuario
+    raise Exception("Can't connect to database")
+Exception: Can't connect to database
+
+
+2016-12-09 09:21:46,936 - Src - ERROR
+Arquivo: Main.py
+Método: exceptions
+Mensagem: 127.0.0.1 POST http /api/v1/usuarios? 5xx INTERNAL SERVER ERROR
+Traceback (most recent call last):
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Program Files\Python35\lib\site-packages\flask_json.py", line 199, in wrapper
+    rv = f(*args, **kwargs)
+  File "C:\GitHub\Feridas\Src\Controllers\Conta\Conta.py", line 23, in adicionar_usuario
+    raise Exception("Can't connect to database")
+Exception: Can't connect to database
+
+
+2016-12-09 09:23:12,325 - Src - ERROR
+Arquivo: Main.py
+Método: exceptions
+Mensagem: 127.0.0.1 POST http /api/v1/usuarios? 5xx INTERNAL SERVER ERROR
+Traceback (most recent call last):
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python35\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Program Files\Python35\lib\site-packages\flask_json.py", line 199, in wrapper
+    rv = f(*args, **kwargs)
+  File "C:\GitHub\Feridas\Src\Controllers\Conta\Conta.py", line 23, in adicionar_usuario
+    form = UsuarioForm.from_json(request.get_json(force=True))
+Exception: Can't connect to database
+
+

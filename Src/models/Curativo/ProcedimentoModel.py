@@ -1,6 +1,4 @@
-from sqlalchemy.orm import relationship
-
-from Src import db
+from Src.Models import db
 
 
 class ProcedimentoModel(db.Model):

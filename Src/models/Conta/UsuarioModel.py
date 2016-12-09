@@ -2,10 +2,10 @@ from flask_security import UserMixin
 from flask.ext import bcrypt
 from datetime import datetime
 
-from Src import db
+from Src.Models import db
 
 
-class Usuario(db.Model, UserMixin):
+class UsuarioModel(db.Model, UserMixin):
     __tablename__ = 'usuario'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
